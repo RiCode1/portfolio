@@ -72,19 +72,17 @@ nav ul {
 }
 
 /* WORK */
-  .cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.cards {
+  display: flex;
   gap: 20px;
-  max-width: 1000px;
 }
 
 .card {
   background: #ffebe5;
-  padding: 16px;
+  padding: 30px;
   border-radius: 16px;
+  flex: 1;
 }
-
 
 /* CONTACT */
 .contact button {
