@@ -5,28 +5,6 @@
   cursor: url("images/ChatGPT Image Feb 5, 2026, 11_39_53 AM.png"), auto;
     }
   
-.pen-underline {
-  position: relative;
-  display: inline-block;
-  cursor: none; /* lets your pen cursor shine */
-}
-
-.pen-underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 3px;
-  background: #ff6b6b; /* accent color */
-  border-radius: 2px;
-  transition: width 0.45s ease;
-}
-
-.pen-underline:hover::after {
-  width: 100%;
-}
-
 
     h1, h2, h3, h4 {
       font-family: 'Playfair Display', serif;
