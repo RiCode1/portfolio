@@ -73,7 +73,7 @@ nav ul {
 
 /* WORK */
 .cards {
-  display: flex;
+  display: block;
   gap: 20px;
 }
 
