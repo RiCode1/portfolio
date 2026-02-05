@@ -1,42 +1,119 @@
-    body {
-      font-family: 'Exo2', sans-serif;
-      background-color: #bad9ee96;
-      color: #1f1f1f;
-  cursor: url("images/ChatGPT Image Feb 5, 2026, 11_39_53 AM.png"), auto;
-    }
-  
-.rounded-photo {
-  width: 200px;       /* adjust size as needed */
-  height: 200px;      /* keep width & height same for perfect circle */
-  object-fit: cover;  /* keeps photo from stretching */
-  border-radius: 50%; /* makes it circular */
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none;
 }
 
-    h1, h2, h3, h4 {
-      font-family: 'Playfair Display', serif;
-    }
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff6f2;
+  color: #2a2a2a;
+}
 
-    section {
-      padding: 5rem 0;
-    }
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 60px;
+}
 
-    .accent {
-      color: #8b5e3c;
-    }
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
 
-    .hero {
-      min-height: 90vh;
-    }
+/* HERO */
+.hero {
+  min-height: 100vh;
+}
 
-    .project-card img {
-      transition: transform 0.4s ease;
-    }
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px;
+}
 
-    .project-card:hover img {
-      transform: scale(1.05);
-    }
+.hero h1 {
+  font-size: 64px;
+  line-height: 1.1;
+}
 
-    footer {
-      background-color: #000000;
-      color: #7fb9d9c0;
-    }
+.hero p {
+  margin-top: 10px;
+  color: #ff6b5c;
+}
+
+/* PHOTO */
+.photo-wrap img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #ff6b5c;
+}
+
+/* ABOUT */
+.about, .work, .contact {
+  padding: 80px 60px;
+}
+
+.about h2,
+.work h2,
+.contact h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.about p {
+  max-width: 600px;
+}
+
+/* WORK */
+.cards {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  background: #ffebe5;
+  padding: 30px;
+  border-radius: 16px;
+  flex: 1;
+}
+
+/* CONTACT */
+.contact button {
+  padding: 14px 30px;
+  background: #ff6b5c;
+  border: none;
+  color: white;
+  border-radius: 30px;
+  margin-top: 20px;
+}
+
+/* CUSTOM CURSOR */
+.cursor {
+  width: 18px;
+  height: 18px;
+  background: #ff6b5c;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.cursor-tooltip {
+  position: fixed;
+  background: #2a2a2a;
+  color: white;
+  padding: 8px 12px;
+  font-size: 12px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+}
