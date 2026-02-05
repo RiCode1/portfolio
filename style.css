@@ -30,11 +30,18 @@ nav ul {
 }
 
 .hero-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px;
+  align-items: flex-start; 
+  padding-top: 40px;
 }
+
+.text {
+  margin-top: -40px; 
+}
+
+.photo-wrap {
+  margin-top: -60px; 
+}
+
 
 .hero h1 {
   font-size: 64px;
