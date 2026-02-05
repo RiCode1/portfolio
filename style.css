@@ -5,6 +5,12 @@
   cursor: url("images/ChatGPT Image Feb 5, 2026, 11_39_53 AM.png"), auto;
     }
   
+.rounded-photo {
+  width: 200px;       /* adjust size as needed */
+  height: 200px;      /* keep width & height same for perfect circle */
+  object-fit: cover;  /* keeps photo from stretching */
+  border-radius: 50%; /* makes it circular */
+}
 
     h1, h2, h3, h4 {
       font-family: 'Playfair Display', serif;
