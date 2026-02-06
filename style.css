@@ -72,36 +72,30 @@ nav ul {
 }
 
 /* WORK */
-.card {
+.work {
+  padding: 24px;
+  background: transparent; /* IMPORTANT */
+}
+
+.cards {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  background: #ffebe5;
-  padding: 14px;
-  border-radius: 14px;
-
-  flex: 0 0 auto;   /* 🔥 DO NOT GROW */
-  width: 160px;     /* fixed small card */
+  gap: 16px;
+  align-items: flex-start;
 }
- .card img {
+
+.card {
+  width: 130px;
+  padding: 0;
+  background: transparent;
+  flex: 0 0 auto;
+}
+
+.card img {
   width: 120px;
-  height: 160px;
+  height: 160px; /* PASSPORT SIZE */
   object-fit: cover;
-  border-radius: 8px;
-  margin: 0 auto;
-}
-
-.card h3 {
-  font-size: 14px;
-  margin: 6px 0 0;
-  text-align: center;
-}
-
-.card p {
-  font-size: 12px;
-  text-align: center;
-  line-height: 1.4;
+  border-radius: 6px;
+  display: block;
 }
 
 
