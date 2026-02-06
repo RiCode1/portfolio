@@ -73,30 +73,24 @@ nav ul {
 
 /* WORK */
 .work {
-  padding: 24px;
+  padding: 60px;
 }
 
 .cards {
-  display: flex;
-  gap: 24px;
-  align-items: flex-start;
-  flex-wrap: nowrap; 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 40px;
+  align-items: start;
+  width: 100%;
 }
 
 .card {
-  width: 180px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 20px;
+  width: 100%;
 }
-
-.card img {
-  width: 160px;
-  height: 210px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
 
 .card-title {
   font-size: 14px;
@@ -105,10 +99,10 @@ nav ul {
 }
 
 .card img {
-  width: 120px;
-  height: 160px; /* passport size */
+  width: 100%;
+  height: auto;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 
