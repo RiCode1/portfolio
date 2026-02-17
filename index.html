@@ -1,95 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ritika | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ritika Mewlani Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter', sans-serif;
+}
+
+body{
+    background:#87CEEB;
+    overflow-x:hidden;
+    cursor:none;
+}
+
+/* CUSTOM CURSOR */
+.cursor{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    background:#0B3D91;
+    mix-blend-mode:multiply;
+    transform:translate(-50%,-50%);
+    z-index:9999;
+}
+
+/* HERO SECTION */
+
+.hero{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.hero img{
+    width:380px;
+    border-radius:20px;
+    position:relative;
+    z-index:2;
+}
+
+/* FLOATING WORDS MASK */
+
+.words{
+    position:absolute;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+
+.word{
+    position:absolute;
+    color:#0B3D91;
+    font-size:2rem;
+    font-weight:700;
+    opacity:0;
+    transition:0.2s ease;
+}
+
+/* ABOUT SECTION */
+
+.section{
+    padding:100px 10%;
+}
+
+.about{
+    background:#ffffff;
+    border-radius:30px;
+    margin:80px auto;
+}
+
+.section h2{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.section p{
+    font-size:1.2rem;
+    line-height:1.8;
+}
+
+/* WORK SECTION */
+
+.work-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.work-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+.work-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.5s ease;
+}
+
+.work-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(11,61,145,0.85);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    opacity:0;
+    transition:0.4s ease;
+}
+
+.work-item:hover img{
+    transform:scale(1.1);
+}
+
+.work-item:hover .work-overlay{
+    opacity:1;
+}
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+    padding:100px 20px;
+}
+
+.contact a{
+    display:block;
+    font-size:1.3rem;
+    margin:15px 0;
+    color:#0B3D91;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.contact a:hover{
+    text-decoration:underline;
+}
+
+</style>
 </head>
+
 <body>
 
-  <!-- Custom Cursor -->
-  <div class="cursor"></div>
-  <div class="cursor-tooltip">
-    <p>border-radius: 50%</p>
-    <p>rounded-full</p>
-  </div>
+<div class="cursor"></div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <nav>
-      <h3>Hi, I'm Ritika </h3>
-      <ul>
-        
-      </ul>
-    </nav>
-
-    <div class="hero-content">
-      <div class="text">
-        <h1>Designing<br>with intention.</h1>
-        <p>Typography • Creative image making • Illustration</p>
-      </div>
-
-      <div class="photo-wrap">
-        <img src="images/WhatsApp Image 2026-02-06 at 2.08.14 AM.jpeg" alt="Ritika">
-      </div>
+<section class="hero">
+    <img src="your-photo.png" alt="Ritika Photo">
+    <div class="words">
+        <div class="word">Creativity</div>
+        <div class="word">Ri's Corner</div>
+        <div class="word">Illustration</div>
+        <div class="word">Work</div>
+        <div class="word">Typography</div>
+        <div class="word">Design</div>
+        <div class="word">Perspective</div>
     </div>
-  </section>
-
-  <!-- About -->
-  <section class="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a design student exploring visual storytelling through digital
-      interfaces, sound, and illustration. I like keeping things simple,
-      playful, and human. I'm currently studying in Ahmedabad, India and am open to internship opportunities for Summer 2026.
-    </p>
-  </section>
-
-<!-- Work -->
-<section class="work">
-  <h2>Selected Work</h2>
-
-  <div class="cards">
-
-    <div class="card">
-      <p class="card-title">Typography movie posters</p>
-      <img src="images/andhadhun_Page_1.jpg" alt="Ritika">
-      <img src="images/final destination_Page_1.jpg" alt="Ritika">
-      <img src="images/final destination_Page_2.jpg" alt="Ritika">
-      <img src="images/titanic.jpg" alt="Ritika">
-    </div>
-
-    <div class="card">
-      <p class="card-title">Editorial Book Design</p>
-      <img src="images/Page_1.jpg" alt="Ritika">
-    </div>
-
-
-    <div class="card">
-      <p class="card-title">Illustration posters (Ray Ban)</p>
-      <img src="images/ray ban urban explorer.jpg" alt="Ritika">
-      <img src="images/ray ban music festival.png" alt="Ritika">
-      <img src="images/ray ban everyday cool.jpg" alt="Ritika">
-    </div>
-
-    <div class="card">
-      <p class="card-title">Creative image making</p>
-      <img src="images/animal x object integration activity.jpg" alt="Ritika">
-    </div>
-
-  </div>
 </section>
 
+<section class="section about">
+    <h2>About Me</h2>
+    <p>
+        Hi, I'm Ritika — a visual designer passionate about typography, 
+        illustration and perspective-driven storytelling. My work explores 
+        form, structure and emotion through minimal yet impactful compositions. 
+        I enjoy blending conceptual thinking with visual experimentation.
+    </p>
+</section>
 
+<section class="section">
+    <h2>My Work</h2>
 
-  <!-- Contact -->
-  <section class="contact">
-    <h2>Let’s Connect</h2>
-    <p>Mail me or just say hi 👋</p>
-    <button>Say Hello</button>
-  </section>
+    <div class="work-grid">
 
-  <script src="script.js"></script>
+        <div class="work-item">
+            <img src="ray-ban-music.png">
+            <div class="work-overlay">
+                Ray Ban Music Festival Illustration – Branding + Event Energy
+            </div>
+        </div>
+
+        <div class="work-item">
+            <img src="ray-ban-urban.png">
+            <div class="work-overlay">
+                Ray Ban Urban Explorer – Perspective based advertising visual
+            </div>
+        </div>
+
+        <div class="work-item">
+            <img src="animal-object.png">
+            <div class="work-overlay">
+                Animal X Object Integration – Conceptual Illustration Study
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="contact">
+    <h2>Let's Connect</h2>
+
+    <a href="https://behance.net/YOURUSERNAME" target="_blank">Behance</a>
+    <a href="https://instagram.com/YOURUSERNAME" target="_blank">Instagram</a>
+    <a href="mailto:your@email.com">your@email.com</a>
+
+</section>
+
+<script>
+
+/* CUSTOM CURSOR */
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", e=>{
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
+
+/* FLOATING WORDS REVEAL */
+
+const words = document.querySelectorAll(".word");
+
+document.addEventListener("mousemove", e=>{
+    words.forEach(word=>{
+        const rect = word.getBoundingClientRect();
+        const dx = e.clientX - (rect.left + rect.width/2);
+        const dy = e.clientY - (rect.top + rect.height/2);
+        const distance = Math.sqrt(dx*dx + dy*dy);
+
+        if(distance < 120){
+            word.style.opacity = 1;
+        }else{
+            word.style.opacity = 0;
+        }
+    });
+});
+
+/* RANDOM WORD POSITIONS */
+
+words.forEach(word=>{
+    word.style.top = Math.random()*80 + "%";
+    word.style.left = Math.random()*80 + "%";
+});
+
+</script>
+
 </body>
 </html>
