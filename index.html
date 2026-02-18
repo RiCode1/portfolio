@@ -8,6 +8,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+    /* BACKGROUND ANIMATION CANVAS */
+#bg-animation{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+}
 
 *{
     margin:0;
@@ -17,7 +26,7 @@
 }
 
 body{
-    background:#87CEEB;
+  background:#87CEEB;
     overflow-x:hidden;
     cursor:none;
 }
@@ -61,7 +70,7 @@ body{
 
 .about-hero-text{
   width: 55%;
-  background: #ffffff;
+  background: rgba(255,255,255,0.9);
   padding: 40px;
   border-radius: 20px;
   position: relative;
@@ -170,6 +179,14 @@ body{
 <div class="cursor">
    <span class="cursor-text"></span>
 </div>
+<body>
+
+<canvas id="bg-animation"></canvas>
+
+<div class="cursor">
+   <span class="cursor-text"></span>
+</div>
+
 <section class="about-hero">
 
   <div class="about-hero-img">
@@ -325,6 +342,65 @@ aboutHero.addEventListener("mouseleave", ()=>{
     cursorText.innerText = "";
     clearInterval(cursor.wordInterval);
 });
+
+// === BACKGROUND ANIMATION ===
+
+const canvas = document.getElementById("bg-animation");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener("resize", ()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+let lines = [];
+
+class Line {
+    constructor(){
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.length = Math.random() * 200 + 100;
+        this.angle = Math.random() * Math.PI * 2;
+        this.speed = Math.random() * 0.002 + 0.001;
+        this.hue = Math.random() * 360;
+    }
+
+    draw(){
+        ctx.beginPath();
+        ctx.strokeStyle = `hsla(${this.hue}, 100%, 60%, 0.4)`;
+        ctx.lineWidth = 3;
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(
+            this.x + Math.cos(this.angle) * this.length,
+            this.y + Math.sin(this.angle) * this.length
+        );
+        ctx.stroke();
+    }
+
+    update(){
+        this.angle += this.speed;
+        this.draw();
+    }
+}
+
+for(let i = 0; i < 15; i++){
+    lines.push(new Line());
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    lines.forEach(line=>{
+        line.update();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
 
 </script>
 </body>
