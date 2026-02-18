@@ -77,20 +77,50 @@ body{
 }
 
 .about{
-    background:#ffffff;
+    background:white;
     border-radius:30px;
     margin:80px auto;
+    position:relative;
+    overflow:hidden;
 }
 
-.section h2{
-    font-size:3rem;
-    margin-bottom:20px;
+.about-container{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:80px;
+    gap:50px;
 }
 
-.section p{
-    font-size:1.2rem;
-    line-height:1.8;
+.about-text{
+    width:55%;
+    position:relative;
 }
+
+.about-image{
+    width:40%;
+}
+
+.about-image img{
+    width:100%;
+    border-radius:20px;
+}
+
+.word{
+    position:absolute;
+    color:#0B3D91;
+    font-size:1.2rem; /* smaller */
+    font-weight:600;
+    opacity:0;
+    transition:0.2s ease;
+    pointer-events:none;
+}
+
+.words{
+    position:absolute;
+    inset:0;
+}
+
 
 /* WORK SECTION */
 
@@ -159,38 +189,43 @@ body{
 </style>
 </head>
 
-<body>
 
-<div class="cursor"></div>
 
-<section class="hero">
-    <img src="images/ritika.jpg" alt="Ritika Photo">
-    <div class="words">
-        <div class="word">Creativity</div>
-        <div class="word">Ri's Corner</div>
-        <div class="word">Illustration</div>
-        <div class="word">Work</div>
-        <div class="word">Typography</div>
-        <div class="word">Design</div>
-        <div class="word">Perspective</div>
-        <div class="word">Storytelling</div>
-        <div class="word">Emotions</div>
-        <div class="word">Problem Solving</div>
-        
+<section class="section about">
+    <div class="about-container">
 
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>
+                Hi, I'm Ritika — a visual designer passionate about 
+                illustration and perspective-driven storytelling. 
+                My work explores form, structure and emotion through 
+                minimal yet impactful compositions. I enjoy blending 
+                conceptual thinking with visual experimentation.
+            </p>
+
+            <div class="words">
+                <div class="word">Creativity</div>
+                <div class="word">Ri's Corner</div>
+                <div class="word">Illustration</div>
+                <div class="word">Work</div>
+                <div class="word">Typography</div>
+                <div class="word">Design</div>
+                <div class="word">Perspective</div>
+                <div class="word">Storytelling</div>
+                <div class="word">Emotions</div>
+                <div class="word">Problem Solving</div>
+            </div>
+
+        </div>
+
+        <div class="about-image">
+            <img src="ritika.jpg" alt="Ritika Photo">
+        </div>
 
     </div>
 </section>
 
-<section class="section about">
-    <h2>About Me</h2>
-    <p>
-        Hi, I'm Ritika — a visual designer passionate about , 
-        illustration and perspective-driven storytelling. My work explores 
-        form, structure and emotion through minimal yet impactful compositions. 
-        I enjoy blending conceptual thinking with visual experimentation.
-    </p>
-</section>
 
 <section class="section">
     <h2>My Work</h2>
@@ -200,49 +235,49 @@ body{
         <div class="work-item">
             <img src="images/ray-banmusic.png">
             <div class="work-overlay">
-                Ray Ban Music Festival Illustration – Branding + Event Energy
+                Ray Ban Music Festival Illustration – Branding 
             </div>
         </div>
 
         <div class="work-item">
             <img src="images/ray-banurban.jpg">
             <div class="work-overlay">
-                Ray Ban Urban Explorer – Perspective based advertising visual
+                Ray Ban Urban Explorer – Perspective based advertising
             </div>
         </div>
 
         <div class="work-item">
             <img src="images/ray-bancool.jpg">
             <div class="work-overlay">
-                Ray Ban Cool – Perspective based advertising visual
+                Ray Ban Cool – Perspective based advertising
             </div>
         </div>
 
         <div class="work-item">
             <img src="images/animalobject.jpg">
             <div class="work-overlay">
-                Animal X Object Integration – Conceptual Illustration Study
+                Animal X Object Integration
             </div>
         </div>
 
             <div class="work-item">
               <img src="images/final-destination.jpg">
               <div class="work-overlay">
-                  Typography Exploration – Experimental Type Design
+                  Typography Exploration – Capturing the gore essence through type
               </div>
         </div>
 
          <div class="work-item">
               <img src="images/titanic.jpg">
               <div class="work-overlay">
-                  Typography Exploration – Experimental Type Design
+                  Typography Exploration – Capturing the tragic romance essence through type
               </div>
         </div>
 
            <div class="work-item">
               <img src="images/andhadhun.jpg">
               <div class="work-overlay">
-                  Typography Exploration – Experimental Type Design
+                  Typography Exploration – Capturing the suspense essence through type
               </div>
         </div>     
 
@@ -275,41 +310,47 @@ body{
 
 <script>
 
-/* CUSTOM CURSOR */
 const cursor = document.querySelector(".cursor");
+const aboutSection = document.querySelector(".about");
+const words = document.querySelectorAll(".word");
 
 document.addEventListener("mousemove", e=>{
     cursor.style.left = e.clientX + "px";
     cursor.style.top = e.clientY + "px";
 });
 
-/* FLOATING WORDS REVEAL */
+aboutSection.addEventListener("mouseenter", ()=>{
+    cursor.style.width = "180px";
+    cursor.style.height = "180px";
+});
 
-const words = document.querySelectorAll(".word");
+aboutSection.addEventListener("mouseleave", ()=>{
+    cursor.style.width = "12px";
+    cursor.style.height = "12px";
+    words.forEach(word=> word.style.opacity = 0);
+});
 
-document.addEventListener("mousemove", e=>{
+aboutSection.addEventListener("mousemove", e=>{
+    const rect = aboutSection.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
     words.forEach(word=>{
-        const rect = word.getBoundingClientRect();
-        const dx = e.clientX - (rect.left + rect.width/2);
-        const dy = e.clientY - (rect.top + rect.height/2);
+        const randomX = Math.random() * rect.width;
+        const randomY = Math.random() * rect.height;
+
+        word.style.left = randomX + "px";
+        word.style.top = randomY + "px";
+
+        const dx = x - randomX;
+        const dy = y - randomY;
         const distance = Math.sqrt(dx*dx + dy*dy);
 
-        if(distance < 120){
+        if(distance < 100){
             word.style.opacity = 1;
-        }else{
+        } else {
             word.style.opacity = 0;
         }
     });
 });
-
-/* RANDOM WORD POSITIONS */
-
-words.forEach(word=>{
-    word.style.top = Math.random()*80 + "%";
-    word.style.left = Math.random()*80 + "%";
-});
-
 </script>
-
-</body>
-</html>
