@@ -35,91 +35,60 @@ body{
     z-index:9999;
 }
 
-/* HERO SECTION */
+/* == TOP ABOUT-HERO LAYOUT == */
 
-.hero{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
+.about-hero{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 8%;
+  gap: 50px;
 }
 
-.hero img{
-    width:380px;
-    border-radius:20px;
-    position:relative;
-    z-index:2;
+.about-hero-img img{
+  width: 420px;
+  border-radius: 20px;
+  object-fit: cover;
 }
 
-/* FLOATING WORDS MASK */
-
-.words{
-    position:absolute;
-    width:100%;
-    height:100%;
-    pointer-events:none;
+.about-hero-text{
+  width: 55%;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
 }
 
-.word{
-    position:absolute;
-    color:#0B3D91;
-    font-size:2rem;
-    font-weight:700;
-    opacity:0;
-    transition:0.2s ease;
+/* TEXT */
+.about-hero-text h2{
+  font-size: 2.8rem;
+  margin-bottom: 18px;
+  color: #0B3D91;
 }
 
-/* ABOUT SECTION */
-
-.section{
-    padding:100px 10%;
+.about-hero-text p{
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #0B3D91;
 }
 
-.about{
-    background:white;
-    border-radius:30px;
-    margin:80px auto;
-    position:relative;
-    overflow:hidden;
+/* HOVER WORDS */
+.hover-words{
+  position: absolute;
+  inset: 0;
 }
 
-.about-container{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:80px;
-    gap:50px;
+.hword{
+  position: absolute;
+  color: #ffffff; /* WHITE */
+  font-size: 1.4rem; /* slightly smaller */
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
 }
 
-.about-text{
-    width:55%;
-    position:relative;
-}
-
-.about-image{
-    width:40%;
-}
-
-.about-image img{
-    width:100%;
-    border-radius:20px;
-}
-
-.word{
-    position:absolute;
-    color:#0B3D91;
-    font-size:1.2rem; /* smaller */
-    font-weight:600;
-    opacity:0;
-    transition:0.2s ease;
-    pointer-events:none;
-}
-
-.words{
-    position:absolute;
-    inset:0;
-}
 
 
 /* WORK SECTION */
@@ -191,43 +160,36 @@ body{
 <body>
 
 <div class="cursor"></div>
-<section class="section hero">
-    <img src="images/ritika.jpg" alt="Ritika Photo">
-<section class="section about">
-</section>
-    
-    <div class="about-container">
+<section class="about-hero">
 
-        <div class="about-text">
-            <h2>About Me</h2>
-            <p>
-                Hi, I'm Ritika — a visual designer passionate about 
-                illustration and perspective-driven storytelling. 
-                My work explores form, structure and emotion through 
-                minimal yet impactful compositions. I enjoy blending 
-                conceptual thinking with visual experimentation.
-            </p>
+  <div class="about-hero-img">
+    <img src="ritika.jpg" alt="Ritika Photo">
+  </div>
 
-            <div class="words">
-                <div class="word">Creativity</div>
-                <div class="word">Ri's Corner</div>
-                <div class="word">Illustration</div>
-                <div class="word">Work</div>
-                <div class="word">Typography</div>
-                <div class="word">Design</div>
-                <div class="word">Perspective</div>
-                <div class="word">Storytelling</div>
-                <div class="word">Emotions</div>
-                <div class="word">Problem Solving</div>
-            </div>
+  <div class="about-hero-text">
 
-        </div>
+    <h2>About Me</h2>
 
-        <div class="about-image">
-            <img src="ritika.jpg" alt="Ritika Photo">
-        </div>
+    <p>
+      Hi, I'm Ritika — a visual designer passionate about
+      illustration and perspective-driven storytelling. My
+      work explores form, structure and emotion through
+      minimal yet impactful compositions. I enjoy blending
+      conceptual thinking with visual experimentation.
+    </p>
 
+    <div class="hover-words">
+      <div class="hword">Creativity</div>
+      <div class="hword">Work</div>
+      <div class="hword">Typography</div>
+      <div class="hword">Design</div>
+      <div class="hword">Problem Solving</div>
+      <div class="hword">Storytelling</div>
+      <div class="hword">Reflection</div>
     </div>
+
+  </div>
+
 </section>
 
 
@@ -314,49 +276,51 @@ body{
 
 <script>
 
+const aboutHero = document.querySelector(".about-hero-text");
+const hoverWords = document.querySelectorAll(".hword");
 const cursor = document.querySelector(".cursor");
-const aboutSection = document.querySelector(".about");
-const words = document.querySelectorAll(".word");
 
 document.addEventListener("mousemove", e=>{
     cursor.style.left = e.clientX + "px";
     cursor.style.top = e.clientY + "px";
 });
 
-aboutSection.addEventListener("mouseenter", ()=>{
+aboutHero.addEventListener("mouseenter", ()=>{
     cursor.style.width = "180px";
     cursor.style.height = "180px";
 });
 
-aboutSection.addEventListener("mouseleave", ()=>{
+aboutHero.addEventListener("mouseleave", ()=>{
     cursor.style.width = "12px";
     cursor.style.height = "12px";
-    words.forEach(word=> word.style.opacity = 0);
+    hoverWords.forEach(w=> w.style.opacity = 0);
 });
 
-aboutSection.addEventListener("mousemove", e=>{
-    const rect = aboutSection.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+aboutHero.addEventListener("mousemove", e=>{
+    const rect = aboutHero.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
 
-    words.forEach(word=>{
-        const randomX = Math.random() * rect.width;
-        const randomY = Math.random() * rect.height;
+    hoverWords.forEach(word=>{
+        // random positions inside the text box
+        const rx = Math.random() * rect.width;
+        const ry = Math.random() * rect.height;
 
-        word.style.left = randomX + "px";
-        word.style.top = randomY + "px";
+        word.style.left = rx + "px";
+        word.style.top = ry + "px";
 
-        const dx = x - randomX;
-        const dy = y - randomY;
-        const distance = Math.sqrt(dx*dx + dy*dy);
+        const dx = mx - rx;
+        const dy = my - ry;
+        const dist = Math.sqrt(dx*dx + dy*dy);
 
-        if(distance < 100){
+        if(dist < 100){
             word.style.opacity = 1;
         } else {
             word.style.opacity = 0;
         }
     });
 });
+
 </script>
 </body>
 </html>
