@@ -22,7 +22,6 @@ body{
     cursor:none;
 }
 
-/* CUSTOM CURSOR */
 .cursor{
     width:12px;
     height:12px;
@@ -30,10 +29,19 @@ body{
     position:fixed;
     pointer-events:none;
     background:#0B3D91;
-    mix-blend-mode:multiply;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.9rem;
+    font-weight:600;
+    text-align:center;
+    padding:10px;
     transform:translate(-50%,-50%);
     z-index:9999;
+    transition: width 0.3s ease, height 0.3s ease;
 }
+
 
 /* == TOP ABOUT-HERO LAYOUT == */
 
@@ -159,7 +167,9 @@ body{
 </head>
 <body>
 
-<div class="cursor"></div>
+<div class="cursor">
+   <span class="cursor-text"></span>
+</div>
 <section class="about-hero">
 
   <div class="about-hero-img">
@@ -276,9 +286,20 @@ body{
 
 <script>
 
-const aboutHero = document.querySelector(".about-hero-text");
-const hoverWords = document.querySelectorAll(".hword");
 const cursor = document.querySelector(".cursor");
+const cursorText = document.querySelector(".cursor-text");
+const aboutHero = document.querySelector(".about-hero-text");
+
+const words = [
+  "Creativity",
+  "Work",
+  "Typography",
+  "Design",
+  "Problem Solving",
+  "Storytelling"
+];
+
+let wordIndex = 0;
 
 document.addEventListener("mousemove", e=>{
     cursor.style.left = e.clientX + "px";
@@ -288,37 +309,22 @@ document.addEventListener("mousemove", e=>{
 aboutHero.addEventListener("mouseenter", ()=>{
     cursor.style.width = "180px";
     cursor.style.height = "180px";
+
+    // Start rotating words
+    wordIndex = 0;
+    cursorText.innerText = words[wordIndex];
+
+    cursor.wordInterval = setInterval(()=>{
+        wordIndex = (wordIndex + 1) % words.length;
+        cursorText.innerText = words[wordIndex];
+    }, 800);
 });
 
 aboutHero.addEventListener("mouseleave", ()=>{
     cursor.style.width = "12px";
     cursor.style.height = "12px";
-    hoverWords.forEach(w=> w.style.opacity = 0);
-});
-
-aboutHero.addEventListener("mousemove", e=>{
-    const rect = aboutHero.getBoundingClientRect();
-    const mx = e.clientX - rect.left;
-    const my = e.clientY - rect.top;
-
-    hoverWords.forEach(word=>{
-        // random positions inside the text box
-        const rx = Math.random() * rect.width;
-        const ry = Math.random() * rect.height;
-
-        word.style.left = rx + "px";
-        word.style.top = ry + "px";
-
-        const dx = mx - rx;
-        const dy = my - ry;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-
-        if(dist < 100){
-            word.style.opacity = 1;
-        } else {
-            word.style.opacity = 0;
-        }
-    });
+    cursorText.innerText = "";
+    clearInterval(cursor.wordInterval);
 });
 
 </script>
