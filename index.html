@@ -256,50 +256,77 @@ body{
 <section class="section">
     <h2>My Work</h2>
 
-    <nav class="category-nav">
+   <nav class="category-nav">
 
-<a href="#illustration">Illustration</a>
-<a href="#typography">Typography</a>
-<a href="#branding">Branding</a>
-<a href="#motion">Motion Graphics</a>
-<a href="#symbol">Symbol Designs</a>
-<a href="#icon">Icon Designs</a>
-<a href="#animal">Animal Integration activity</a>
-<a href="#print">Design For Print</a>
+
+<a class="filter-btn" data-filter="illustration">
+Illustration
+</a>
+
+<a class="filter-btn" data-filter="typography">
+Typography
+</a>
+
+<a class="filter-btn" data-filter="branding">
+Branding
+</a>
+
+<a class="filter-btn" data-filter="motion">
+Motion Graphics
+</a>
+
+<a class="filter-btn" data-filter="symbol">
+Symbol Designs
+</a>
+
+<a class="filter-btn" data-filter="icon">
+Icon Designs
+</a>
+
+<a class="filter-btn" data-filter="animal">
+Animal Integration Activity
+</a>
+
+<a class="filter-btn" data-filter="print">
+Design For Print
+</a>
 
 </nav>
- 
-    <section class="portfolio-category" id="illustration">
 
-    <h2>Illustration</h2>
+<div class="work-grid">
 
-    <div class="work-grid">
+<div class="work-item illustration"></div>
 
-        <!-- Illustration projects here -->
+     <img src="ray ban urban explorer.jpg">
 
-    </div>
+        <div class="work-overlay">
+            Ray Ban Urban Explorer 
 
-</section>
+     <img src="ray ban music festival.png">
 
+        <div class="work-overlay">
+            Ray Ban Music Festival
 
-<section class="portfolio-category" id="typography">
+             <img src="ray ban everyday cool.jpg">
 
-    <h2>Typography</h2>
-
-    <div class="work-grid">
-
-        <!-- Typography projects here -->
+        <div class="work-overlay">
+            Ray Ban Everyday Cool
 
     </div>
 
 </section>
 
 
-<section class="portfolio-category" id="branding">
 
-    <h2>Branding</h2>
+<div class="work-item typography"></div>
 
-    <div class="work-grid">
+
+    </div>
+
+</section>
+
+
+   <div class="work-item branding"></div>
 
         <!-- Branding projects here -->
 
@@ -308,11 +335,8 @@ body{
 </section>
 
 
-<section class="portfolio-category" id="motion">
 
-    <h2>Motion Graphics</h2>
-
-    <div class="work-grid">
+   <div class="work-item motion graphics"></div>
 
         <!-- Motion projects here -->
 
@@ -321,11 +345,7 @@ body{
 </section>
 
 
-<section class="portfolio-category" id="symbol">
-
-    <h2>Symbol Design</h2>
-
-    <div class="work-grid">
+<div class="work-item symbol designs"></div>
 
         <!-- Symbol projects here -->
 
@@ -334,11 +354,8 @@ body{
 </section>
 
 
-<section class="portfolio-category" id="icon">
 
-    <h2>Icon Design</h2>
-
-    <div class="work-grid">
+   <div class="work-item icon designs"></div>
 
         <!-- Icon projects here -->
 
@@ -347,11 +364,8 @@ body{
 </section>
 
 
-<section class="portfolio-category" id="animal">
 
-    <h2>Animal Integration</h2>
-
-    <div class="work-grid">
+  <div class="work-item animal integration activity"></div>
 
         <!-- Animal integration projects here -->
 
@@ -360,11 +374,8 @@ body{
 </section>
 
 
-<section class="portfolio-category" id="print">
 
-    <h2>Design For Print</h2>
-
-    <div class="work-grid">
+  <div class="work-item design for print"></div>
 
         <!-- Print projects here -->
 
@@ -483,6 +494,31 @@ function animate(){
 }
 
 animate();
+const filterButtons = document.querySelectorAll(".filter-btn");
+const workItems = document.querySelectorAll(".work-item");
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", ()=>{
+
+        const filter = button.dataset.filter;
+
+        workItems.forEach(item=>{
+
+            if(
+                filter === "all" ||
+                item.classList.contains(filter)
+            ){
+                item.style.display = "block";
+            }else{
+                item.style.display = "none";
+            }
+
+        });
+
+    });
+
+});
 
 </script>
 </body>
