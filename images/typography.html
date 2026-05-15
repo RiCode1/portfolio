@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Typography</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    padding:40px;
+    background:#87CEEB;
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+}
+
+#bg-animation{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:40px;
+    text-decoration:none;
+    color:#0B3D91;
+    font-weight:600;
+}
+
+h1{
+    color:#0B3D91;
+    margin-bottom:40px;
+    font-size:3rem;
+}
+
+.flipbook{
+    width: 1000px;
+    height:700px;
+    margin:auto;
+}
+
+.page{
+    background:white;
+    overflow:hidden;
+}
+
+.page img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+
+body{
+    margin:0;
+    padding:40px;
+    background:#87CEEB;
+    font-family:'Inter', sans-serif;
+}
+
+h1{
+    color:#0B3D91;
+    margin-bottom:40px;
+}
+
+.gallery{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:20px;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:40px;
+    text-decoration:none;
+    color:#0B3D91;
+    font-weight:600;
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="back">
+← Back
+</a>
+
+<h1>Typography</h1>
+
+<div class="flipbook" id="flipbook">
+
+    <div class="page">
+        <img src="book...._Page_1.jpg">
+    </div>
+
+    <div class="page">
+        <img src="book...._Page_2.jpg">
+    </div>
+
+    <div class="page">
+        <img src="book...._Page_3.jpg">
+    </div>
+
+    <div class="page">
+        <img src="book...._Page_4.jpg">
+    </div>
+
+    <div class="page">
+        <img src="book...._Page_6.jpg">
+    </div>
+
+    <div class="page">
+        <img src="book...._Page_7.jpg">
+    </div>
+
+    <div class="page">
+        <img src="book...._Page_8.jpg">
+    </div>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+<script>
+
+const pageFlip = new St.PageFlip(document.getElementById("flipbook"), {
+
+    width: 500,
+    height: 700,
+
+    size: "stretch",
+
+    minWidth: 315,
+    maxWidth: 1000,
+
+    minHeight: 400,
+    maxHeight: 1350,
+
+    showCover: true,
+
+    mobileScrollSupport: false,
+
+    flippingTime: 1000,
+
+    useMouseEvents: true,
+
+    maxShadowOpacity: 0.5,
+
+});
+
+pageFlip.loadFromHTML(document.querySelectorAll(".page"));
+
+
+// === BACKGROUND ANIMATION ===
+
+const canvas = document.getElementById("bg-animation");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener("resize", ()=>{
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+});
+
+let lines = [];
+
+class Line {
+
+    constructor(){
+
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+
+        this.length = Math.random() * 200 + 100;
+
+        this.angle = Math.random() * Math.PI * 2;
+
+        this.speed = Math.random() * 0.002 + 0.001;
+
+        this.hue = Math.random() * 360;
+    }
+
+    draw(){
+
+        ctx.beginPath();
+
+        ctx.strokeStyle = `hsla(${this.hue}, 100%, 60%, 0.4)`;
+
+        ctx.lineWidth = 3;
+
+        ctx.moveTo(this.x, this.y);
+
+        ctx.lineTo(
+            this.x + Math.cos(this.angle) * this.length,
+            this.y + Math.sin(this.angle) * this.length
+        );
+
+        ctx.stroke();
+    }
+
+    update(){
+
+        this.angle += this.speed;
+
+        this.draw();
+    }
+}
+
+for(let i = 0; i < 15; i++){
+
+    lines.push(new Line());
+}
+
+function animate(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    lines.forEach(line=>{
+
+        line.update();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+
+
+</script>
+
+<div class="gallery">
+
+<img src="titanic.jpg">
+
+<img src="andhadhun.jpg">
+
+<img src="final-destination.jpg">
+
+<img src="space and form dominance asmnt 4 pdf_Page_5.jpg">
+
+<img src="space and form dominance asmnt 4 pdf_Page_2.jpg">
+
+<img src="space and form dominance asmnt 3 pdf_Page_4.jpg">
+
+<img src="space and form dominance asmnt 3 pdf_Page_2.jpg">
+
+
+
+</div>
+
+</body>
+</html>

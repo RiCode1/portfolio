@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Motion Graphics</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* BACKGROUND ANIMATION */
+
+#bg-animation{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+}
+
+/* GLOBAL */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter', sans-serif;
+}
+
+body{
+    background:#87CEEB;
+    padding:50px 8%;
+    overflow-x:hidden;
+}
+
+/* BACK BUTTON */
+
+.back{
+    display:inline-block;
+    margin-bottom:40px;
+    text-decoration:none;
+    color:#0B3D91;
+    font-weight:600;
+    font-size:1rem;
+}
+
+/* PAGE TITLE */
+
+h1{
+    font-size:3rem;
+    color:#0B3D91;
+    margin-bottom:50px;
+}
+
+/* VIDEO GALLERY */
+
+.video-gallery{
+    display:flex;
+    flex-direction:column;
+    gap:60px;
+}
+
+/* VIDEO STYLE */
+
+.video-gallery video{
+    width:100%;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="bg-animation"></canvas>
+
+<a href="index.html" class="back">
+← Back
+</a>
+
+<h1>Motion Graphics music video</h1>
+
+<div class="video-gallery">
+
+   <video autoplay controls>
+
+    <source src="Music video.mp4" type="video/mp4">
+
+</video>
+</div>
+
+<script>
+
+// === BACKGROUND ANIMATION ===
+
+const canvas = document.getElementById("bg-animation");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener("resize", ()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+let lines = [];
+
+class Line {
+    constructor(){
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.length = Math.random() * 200 + 100;
+        this.angle = Math.random() * Math.PI * 2;
+        this.speed = Math.random() * 0.002 + 0.001;
+        this.hue = Math.random() * 360;
+    }
+
+    draw(){
+        ctx.beginPath();
+        ctx.strokeStyle = `hsla(${this.hue}, 100%, 60%, 0.4)`;
+        ctx.lineWidth = 3;
+
+        ctx.moveTo(this.x, this.y);
+
+        ctx.lineTo(
+            this.x + Math.cos(this.angle) * this.length,
+            this.y + Math.sin(this.angle) * this.length
+        );
+
+        ctx.stroke();
+    }
+
+    update(){
+        this.angle += this.speed;
+        this.draw();
+    }
+}
+
+for(let i = 0; i < 15; i++){
+    lines.push(new Line());
+}
+
+function animate(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    lines.forEach(line=>{
+        line.update();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
+
+</body>
+</html>
