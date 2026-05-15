@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ritika Mewlani Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    /* BACKGROUND ANIMATION CANVAS */
+#bg-animation{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter', sans-serif;
+}
+
+body{
+  background:#87CEEB;
+    overflow-x:hidden;
+    cursor:none;
+}
+
+.cursor{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    background:#0B3D91;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.9rem;
+    font-weight:600;
+    text-align:center;
+    padding:10px;
+    transform:translate(-50%,-50%);
+    z-index:9999;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+
+/* == TOP ABOUT-HERO LAYOUT == */
+
+.about-hero{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 8%;
+  gap: 50px;
+}
+
+.about-hero-img img{
+  width: 420px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.about-hero-text{
+  width: 55%;
+  background: rgba(255,255,255,0.9);
+  padding: 40px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* TEXT */
+.about-hero-text h2{
+  font-size: 2.8rem;
+  margin-bottom: 18px;
+  color: #0B3D91;
+}
+
+.about-hero-text p{
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #0B3D91;
+}
+
+/* HOVER WORDS */
+.hover-words{
+  position: absolute;
+  inset: 0;
+}
+
+.hword{
+  position: absolute;
+  color: #ffffff; /* WHITE */
+  font-size: 1.4rem; /* slightly smaller */
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+
+
+/* WORK SECTION */
+
+.work-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    cursor:pointer;
+
+    .portfolio-category{
+    padding:100px 8%;
+}
+
+.portfolio-category h2{
+    font-size:3rem;
+    margin-bottom:40px;
+    color:#0B3D91;
+}
+}
+
+.category-nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
+    padding:40px 8%;
+}
+
+.category-nav a{
+    text-decoration:none;
+    color:#0B3D91;
+    font-weight:600;
+    padding:10px 18px;
+    background:white;
+    border-radius:30px;
+    transition:0.3s ease;
+}
+
+.category-nav a:hover{
+    background:#0B3D91;
+    color:white;
+}
+
+.work-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.5s ease;
+}
+
+.work-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(11,61,145,0.85);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+    opacity:0;
+    transition:0.4s ease;
+}
+
+.work-item:hover img{
+    transform:scale(1.1);
+}
+
+.work-item:hover .work-overlay{
+    opacity:1;
+}
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+    padding:100px 20px;
+}
+
+.contact a{
+    display:block;
+    font-size:1.3rem;
+    margin:15px 0;
+    color:#0B3D91;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.contact a:hover{
+    text-decoration:underline;
+}
+
+</style>
+</head>
+<body>
+
+<div class="cursor">
+   <span class="cursor-text"></span>
+</div>
+<body>
+
+<canvas id="bg-animation"></canvas>
+
+<div class="cursor">
+   <span class="cursor-text"></span>
+</div>
+
+<section class="about-hero">
+
+  <div class="about-hero-img">
+    <img src="images/ritika.jpg" alt="Ritika Photo">
+  </div>
+
+  <div class="about-hero-text">
+
+    <h2>About Me</h2>
+
+    <p>
+      Hi, I'm Ritika — a visual designer passionate about
+      illustration and perspective-driven storytelling. My
+      work explores form, structure and emotion through
+      minimal yet impactful compositions. I enjoy blending
+      conceptual thinking with visual experimentation.
+    </p>
+
+    <div class="hover-words">
+      <div class="hword">Creativity</div>
+      <div class="hword">Work</div>
+      <div class="hword">Typography</div>
+      <div class="hword">Design</div>
+      <div class="hword">Problem Solving</div>
+      <div class="hword">Storytelling</div>
+      <div class="hword">Reflection</div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+<h2>My Work</h2>
+
+<nav class="category-nav">
+
+<a href="illustration.html">Illustration</a>
+
+<a href="typography.html">Typography</a>
+
+<a href="branding.html">Branding</a>
+
+<a href="motion.html">Motion Graphics</a>
+
+<a href="symbol.html">Symbol Designs</a>
+
+<a href="icon.html">Icon Designs</a>
+
+<a href="animal.html">Animal Integration</a>
+
+<a href="print.html">Design For Print</a>
+
+</nav>
+
+
+</section>
+
+<section class="contact">
+    <h2>Let's Connect</h2>
+
+    <a href="https://www.behance.net/ritikamewlani#" target="_blank">Behance</a>
+    <a href="https://www.instagram.com/ri_creates1?igsh=MTJuMmx2dTM4cjc4Zg%3D%3D&utm_source=qr" target="_blank">Instagram</a>
+    <a href="mailto:ritikamewlani@gmail.com">ritikamewlani@gmail.com</a>
+
+</section>
+
+<script>
+
+const cursor = document.querySelector(".cursor");
+const cursorText = document.querySelector(".cursor-text");
+const aboutHero = document.querySelector(".about-hero-text");
+
+const words = [
+  "Creativity",
+  "Work",
+  "Typography",
+  "Design",
+  "Problem Solving",
+  "Storytelling"
+];
+
+let wordIndex = 0;
+
+document.addEventListener("mousemove", e=>{
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
+
+aboutHero.addEventListener("mouseenter", ()=>{
+    cursor.style.width = "180px";
+    cursor.style.height = "180px";
+
+    // Start rotating words
+    wordIndex = 0;
+    cursorText.innerText = words[wordIndex];
+
+    cursor.wordInterval = setInterval(()=>{
+        wordIndex = (wordIndex + 1) % words.length;
+        cursorText.innerText = words[wordIndex];
+    }, 800);
+});
+
+aboutHero.addEventListener("mouseleave", ()=>{
+    cursor.style.width = "12px";
+    cursor.style.height = "12px";
+    cursorText.innerText = "";
+    clearInterval(cursor.wordInterval);
+});
+
+// === BACKGROUND ANIMATION ===
+
+const canvas = document.getElementById("bg-animation");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener("resize", ()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+let lines = [];
+
+class Line {
+    constructor(){
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.length = Math.random() * 200 + 100;
+        this.angle = Math.random() * Math.PI * 2;
+        this.speed = Math.random() * 0.002 + 0.001;
+        this.hue = Math.random() * 360;
+    }
+
+    draw(){
+        ctx.beginPath();
+        ctx.strokeStyle = `hsla(${this.hue}, 100%, 60%, 0.4)`;
+        ctx.lineWidth = 3;
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(
+            this.x + Math.cos(this.angle) * this.length,
+            this.y + Math.sin(this.angle) * this.length
+        );
+        ctx.stroke();
+    }
+
+    update(){
+        this.angle += this.speed;
+        this.draw();
+    }
+}
+
+for(let i = 0; i < 15; i++){
+    lines.push(new Line());
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    lines.forEach(line=>{
+        line.update();
+    });
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
+</body>
+</html>
